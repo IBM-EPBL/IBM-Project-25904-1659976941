@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{{ url_for('static',filename='styles/styles.css') }}">
+	<script src="{{url_for('static', filename='styles/delaypredict.js')}}"></script>
+	<title>Flight Delay Prediction</title>
+</head>
+<body id="flight-form">
+<h2 id="main-head" class="centered-head">FLIGHT DELAY PREDICTION</h2>
+<img src="{{url_for('static', filename='styles/images/Flight.png')}}" id="bgimg">
+<form name="flightForm" action="/result" method="POST" target="_blank">
+	<div id="form-content">
+		<div id="block1">
+			<div class="detail-container">
+				<label for="fno" class="label-item">Enter the Flight Number</label>
+				<br>
+				<input type="number" id="fno" name="fno" class="text-input">
+			</div>
+			<div class="detail-container">
+				<label for="month" class="label-item">Month</label>
+				<br>
+				<input type="number" id="month" name="month" class="text-input" onblur="checkValid('month');" placeholder="Enter the Month Number">
+				<div class="alert-text" id="month-valid">Enter a valid month between 1 to 12.</div>
+			</div>
+			<div class="detail-container">
+				<label for="daym" class="label-item">Day of Month</label>
+				<br>
+				<input type="number" id="daym" name="daym" class="text-input" onblur="checkValid('daym');">
+				<div class="alert-text" id="daym-valid">Enter a valid day of month.</div>
+			</div>
+			<div class="detail-container">
+				<label for="dayw" class="label-item">Day of Week</label>
+				<br>
+				<input type="number" id="dayw" name="dayw" class="text-input" onblur="checkValid('dayw');">
+				<div class="alert-text" id="dayw-valid">Enter a valid day between 1 to 7.</div>
+			</div>
+			<div class="detail-container">
+				<label for="org" class="label-item">Origin</label>
+				<br>
+				<select id="org" name="org" class="select-input">
+					<option value="ATL" class="option-item">ATL</option>
+					<option value="SEA" class="option-item">SEA</option>
+					<option value="DTW" class="option-item">DTW</option>
+					<option value="MSP" class="option-item">MSP</option>
+					<option value="JFK" class="option-item">JFK</option>
+				</select>
+			</div>
+			<div class="detail-container">
+				<label for="dest" class="label-item">Destination</label>
+				<br>
+				<select id="dest" name="dest" class="select-input" onblur="checkValid('dest');">
+					<option value="ATL" class="option-item">ATL</option>
+					<option value="SEA" class="option-item">SEA</option>
+					<option value="DTW" class="option-item">DTW</option>
+					<option value="MSP" class="option-item">MSP</option>
+					<option value="JFK" class="option-item">JFK</option>
+				</select>
+				<div class="alert-text" id="dest-valid">Enter different Origin and Destination.</div>
+			</div>
+		</div>
+		<div id="block2">
+			<div class="detail-container">
+				<label for="sdt" class="label-item">Scheduled Departure Time</label>
+				<br>
+				<input type="number" id="sdt" name="sdt" class="text-input" onblur="checkValid('sdt');" placeholder="Enter in the format HHMM">
+				<div class="alert-text" id="sdt-valid">Enter a valid time between 500 to 2359.</div>
+			</div>
+			<div class="detail-container">
+				<label for="sat" class="label-item">Scheduled Arrival Time</label>
+				<br>
+				<input type="number" id="sat" name="sat" class="text-input" onblur="checkValid('sat');" placeholder="Enter in the format HHMM">
+				<div class="alert-text" id="sat-valid">Enter a valid time between 500 to 2359.</div>
+			</div>
+			<div class="detail-container">
+				<label for="adt" class="label-item">Actual Departure Time</label>
+				<br>
+				<input type="number" id="adt" name="adt" class="text-input" onblur="checkValid('adt');" placeholder="Enter in the format HHMM">
+				<div class="alert-text" id="adt-valid">Enter a valid time between 500 to 2359.</div>
+			</div>
+		</div>
+	</div>
+	<div id="submit-button">
+		<input type="submit" value="Submit" id="submit" class="button" onclick="validateForm()">
+	</div>
+</form>
+</body>
+</html>
