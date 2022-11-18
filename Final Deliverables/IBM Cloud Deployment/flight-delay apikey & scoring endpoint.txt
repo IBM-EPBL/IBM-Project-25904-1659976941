@@ -1,0 +1,10 @@
+API Key:
+
+I6vmW4nmyS35HD92jVtP81M_Ltw4dt5YoSFGBSpTvvSJ
+
+
+------------------------------------------------------
+
+Scoring Endpoint:
+
+https://us-south.ml.cloud.ibm.com/ml/v4/deployments/e86c480e-b476-4c22-a0bf-14e40d92c63b/predictions?version=2022-11-17
