@@ -72,18 +72,14 @@ def predict():
 
 def preprocessAndPredict(inputs):
 	test_data = np.array(inputs).reshape((1,16))
-	# crssc_file = open('C:\\Users\\Sys\\Desktop\\IBM-Project\\Blessy\\crs_scale.pkl')
-	# flnumsc_file = open('C:\\Users\\Sys\\Desktop\\IBM-Project\\Blessy\\flnum_scale.pkl')
-	model_file = open('C:\\Users\\Sys\\Desktop\\IBM-Project\\Blessy\\model.pkl', 'rb')
 	
+	model_file = open('D:\\IBM-Project-25904-1659976941\\Final Deliverables\\model.pkl', 'rb')
 	
-	# crs_sc = joblib.load(crssc_file)
-	# flnum_sc = joblib.load(flnumsc_file)
 	trained_model = joblib.load(model_file)
 
-	crs_sc = pickle.load(open('C:\\Users\\Sys\\Desktop\\IBM-Project\\Blessy\\crs_scale.pkl', 'rb'))
-	flnum_sc = pickle.load(open('C:\\Users\\Sys\\Desktop\\IBM-Project\\Blessy\\flnum_scale.pkl', 'rb'))
-	# trained_model = pickle.load(open('C:\\Users\\Sys\\Desktop\\IBM-Project\\Blessy\\model.pkl', 'rb'))
+	crs_sc = pickle.load(open('D:\\IBM-Project-25904-1659976941\\Final Deliverables\\crs_scale.pkl', 'rb'))
+	flnum_sc = pickle.load(open('D:\\IBM-Project-25904-1659976941\\Final Deliverables\\flnum_scale.pkl', 'rb'))
+	
 
 	df = pd.DataFrame(data=test_data[0:, 0:], columns=['FL_NUM', 'MONTH', 'DAY_OF_MONTH', 'DAY_OF_WEEK', 'DEP_DEL15', 'CRS_ARR_TIME', 'ORIGIN_ATL', 'ORIGIN_DTW', 'ORIGIN_JFK', 'ORIGIN_MSP', 'ORIGIN_SEA', 'DEST_ATL', 'DEST_DTW', 'DEST_JFK', 'DEST_MSP', 'DEST_SEA'])
 	df[['FL_NUM']] = flnum_sc.transform(df[['FL_NUM']])
