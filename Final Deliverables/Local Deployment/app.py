@@ -71,7 +71,7 @@ def predict():
 def preprocessAndPredict(inputs):
 	test_data = np.array(inputs).reshape((1,16))
 	
-	model_file = open('D:\\IBM-Project-25904-1659976941\\Final Deliverables\\Local Deployment\\model.pkl', 'rb')
+	model_file = open('D:\\IBM-Project-25904-1659976941\\Final Deliverables\\model.pkl', 'rb')
 	
 	trained_model = joblib.load(model_file)
 
