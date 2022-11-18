@@ -77,8 +77,7 @@ def predict():
 	# NOTE: manually define and pass the array(s) of values to be scored in the next line
 	payload_scoring = {"input_data": [{"fields": [['f0', 'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12', 'f13', 'f14', 'f15']], "values": [inputs]}]}
 
-	response_scoring = requests.post('https://us-south.ml.cloud.ibm.com/ml/v4/deployments/dab17820-0dc3-4c80-bc28-3f63e97ef16a/predictions?version=2022-11-17', json=payload_scoring,
-	headers={'Authorization': 'Bearer ' + mltoken})
+	response_scoring = requests.post('https://us-south.ml.cloud.ibm.com/ml/v4/deployments/cec48201-70cc-4651-aa5d-7f49f99a586a/predictions?version=2022-11-18', json=payload_scoring, headers={'Authorization': 'Bearer ' + mltoken})
 	print("Scoring response")
 	predictions = response_scoring.json()
 	print(response_scoring.json())
