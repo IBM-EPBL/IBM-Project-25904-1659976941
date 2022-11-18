@@ -1,6 +1,4 @@
 from flask import Flask, render_template, request
-from sklearn.preprocessing import LabelEncoder, StandardScaler
-import csv, pickle
 import pandas as pd
 import joblib
 import numpy as np
@@ -77,13 +75,7 @@ def preprocessAndPredict(inputs):
 	
 	trained_model = joblib.load(model_file)
 
-	crs_sc = pickle.load(open('D:\\IBM-Project-25904-1659976941\\Final Deliverables\\crs_scale.pkl', 'rb'))
-	flnum_sc = pickle.load(open('D:\\IBM-Project-25904-1659976941\\Final Deliverables\\flnum_scale.pkl', 'rb'))
-	
-
 	df = pd.DataFrame(data=test_data[0:, 0:], columns=['FL_NUM', 'MONTH', 'DAY_OF_MONTH', 'DAY_OF_WEEK', 'DEP_DEL15', 'CRS_ARR_TIME', 'ORIGIN_ATL', 'ORIGIN_DTW', 'ORIGIN_JFK', 'ORIGIN_MSP', 'ORIGIN_SEA', 'DEST_ATL', 'DEST_DTW', 'DEST_JFK', 'DEST_MSP', 'DEST_SEA'])
-	df[['FL_NUM']] = flnum_sc.transform(df[['FL_NUM']])
-	df[['CRS_ARR_TIME']] = crs_sc.transform(df[['CRS_ARR_TIME']])
 
 	data = df.values
 
